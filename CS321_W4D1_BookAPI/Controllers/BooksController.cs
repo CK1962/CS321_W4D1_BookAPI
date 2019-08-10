@@ -2,6 +2,7 @@
 using CS321_W4D1_BookAPI.ApiModels;
 using CS321_W4D1_BookAPI.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace CS321_W4D1_BookAPI.Controllers
 {
@@ -86,7 +87,7 @@ namespace CS321_W4D1_BookAPI.Controllers
         // NOTE that the route specified in HttpGet begins with a forward slash.
         // This overrides the Route("/api/[controller]") specified on the BooksController
         // class.
-        [HttpGet("/api/authors/{authorId}/books")]
+        [HttpGet("/api/author/{authorId}/books")]
          public IActionResult GetBooksForAuthor(int authorId)
          {
             var bookModels = _bookService
