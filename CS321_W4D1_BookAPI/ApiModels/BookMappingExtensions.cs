@@ -19,6 +19,11 @@ namespace CS321_W4D1_BookAPI.ApiModels
                 OriginalLanguage = book.OriginalLanguage,
                 PublicationYear = book.PublicationYear,
                 PublisherId = book.PublisherId,
+
+                Publisher = book.Publisher != null
+                     ? book.Publisher.Name + ", " + book.Publisher.HeadQuartersLocation
+                     : null,
+
                 AuthorId = book.AuthorId,
                 // concatenate the author's name properties and use it as the value of
                 // Author. Use null if the Author is null.

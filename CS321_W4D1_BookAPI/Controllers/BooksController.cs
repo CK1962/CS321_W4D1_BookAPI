@@ -1,4 +1,5 @@
-﻿using CS321_W4D1_BookAPI.ApiModels;
+﻿using CS321_W4D1_BookAPI.Models;
+using CS321_W4D1_BookAPI.ApiModels;
 using CS321_W4D1_BookAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,8 +22,9 @@ namespace CS321_W4D1_BookAPI.Controllers
         public IActionResult Get()
         {
             // TODO: convert domain models to apimodels
-            var bookModels = _bookService.GetAll()
-                .ToApiModel();
+            var bookModels = _bookService
+                .GetAll()
+                .ToApiModels();
             return Ok(bookModels);
         }
 
@@ -32,11 +34,11 @@ namespace CS321_W4D1_BookAPI.Controllers
         public IActionResult Get(int id)
         {
             // TODO: convert domain model to apimodel
-            var book = _bookService
-                .Get(id)
-                .ToApiModel();
+            var book = _bookService.Get(id);
+
+
             if (book == null) return NotFound();
-            return Ok(book);
+            return Ok(book.ToApiModel());
         }
 
         // create a new book
@@ -76,6 +78,37 @@ namespace CS321_W4D1_BookAPI.Controllers
             if (book == null) return NotFound();
             _bookService.Remove(book);
             return NoContent();
+        }
+    
+       
+        // GET api/author/{authorId
+        //books
+        // NOTE that the route specified in HttpGet begins with a forward slash.
+        // This overrides the Route("/api/[controller]") specified on the BooksController
+        // class.
+        [HttpGet("/api/authors/{authorId}/books")]
+         public IActionResult GetBooksForAuthor(int authorId)
+         {
+            var bookModels = _bookService
+            .GetBooksForAuthor(authorId)
+            .ToApiModels();
+
+            return Ok(bookModels);
+         }
+
+        // GET api/publisher/{publisherId
+        //books
+        // NOTE that the route specified in HttpGet begins with a forward slash.
+        // This overrides the Route("/api/[controller]") specified on the BooksController
+        // class.
+        [HttpGet("/api/publisher/{publisherId}/books")]
+        public IActionResult GetBooksForPublisher(int publisherId)
+        {
+            var bookModels = _bookService
+            .GetBooksForPublisher(publisherId)
+            .ToApiModels();
+
+            return Ok(bookModels);
         }
     }
 }

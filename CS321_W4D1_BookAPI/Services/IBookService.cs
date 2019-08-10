@@ -20,7 +20,9 @@ namespace CS321_W4D1_BookAPI.Services
         IEnumerable<Book> GetAll();
         void Add(BookModel newBook);
         object Update(BookModel updatedBook);
+        object GetBooksForAuthor(int authorId);
 
         // TODO: add GetBooksForAuthor(int authorId) method
+        IEnumerable<Book> GetBooksForAuthor(int Id);
     }
 }

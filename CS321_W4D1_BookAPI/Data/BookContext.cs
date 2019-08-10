@@ -12,6 +12,9 @@ namespace CS321_W4D1_BookAPI.Data
         // TODO: implement a DbSet<Author> property
         public DbSet<Author> Authors { get; set; }
 
+        // TODO: implement a DbSet<Publisher> property
+        public DbSet<Publisher> Publishers { get; set; }
+
         // This method runs once when the DbContext is first used.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

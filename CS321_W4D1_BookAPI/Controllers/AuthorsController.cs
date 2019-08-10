@@ -37,11 +37,10 @@ namespace CS321_W4D1_BookAPI.Controllers
         public IActionResult Get(int id)
         {
             // TODO: return ApiModel instead of domain model
-            var author = _authorService
-                .Get(id)
-                .ToApiModel();
+            var author = _authorService.Get(id);
+                
             if (author == null) return NotFound();
-            return Ok(author);
+            return Ok(author.ToApiModel());
         }
 
         // create a new author
@@ -74,7 +73,7 @@ namespace CS321_W4D1_BookAPI.Controllers
             // TODO: convert updatedAuthor to a domain model
             var author = _authorService.Update(updatedAuthor.ToDomainModel());
             if (author == null) return NotFound();
-            return Ok(author);
+            return Ok(author.ToApiModel());
         }
 
         // TODO: delete an existing author
