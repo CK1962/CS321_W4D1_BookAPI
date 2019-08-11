@@ -8,13 +8,13 @@ namespace CS321_W4D1_BookAPI.Services
         // CRUDL - create (add), read (get), update, delete (remove), list
 
         // create
-        Publisher Add(Publisher todo);
+        Publisher Add(Publisher publisher);
         // read
         Publisher Get(int id);
         // update
-        Publisher Update(Publisher todo);
+        Publisher Update(Publisher publisher);
         // delete
-        void Remove(Publisher todo);
+        void Remove(Publisher publisher);
         // list
         IEnumerable<Publisher> GetAll();
     }

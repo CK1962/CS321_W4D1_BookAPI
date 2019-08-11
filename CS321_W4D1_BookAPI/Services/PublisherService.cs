@@ -20,9 +20,9 @@ namespace CS321_W4D1_BookAPI.Services
         public Publisher Add(Publisher publisher)
         {
             // TODO: implement add
-            _bookContext.Publisher.Add(Publisher);
+            _bookContext.Publishers.Add(publisher);
             _bookContext.SaveChanges();
-            return Publisher;
+            return publisher;
         }
 
         public Publisher Get(int id)
@@ -34,7 +34,8 @@ namespace CS321_W4D1_BookAPI.Services
         public IEnumerable<Publisher> GetAll()
         {
             // TODO: return all Publisher using ToList()
-            return _bookContext.Publisher.ToList();
+            return _bookContext.Publishers.ToList();
+                
         }
 
         public Publisher Update(Publisher updatedPublisher)
@@ -56,15 +57,15 @@ namespace CS321_W4D1_BookAPI.Services
                 .SetValues(updatedPublisher);
 
             // update the todo and save
-            _bookContext.Authors.Update(currentPublisher);
+            _bookContext.Publishers.Update(currentPublisher);
             _bookContext.SaveChanges();
             return currentPublisher;
         }
 
-        public void Remove(Publisher Publisher)
+        public void Remove(Publisher publisher)
         {
             // TODO: remove the Publisher
-            _bookContext.Publishers.Remove(Publisher);
+            _bookContext.Publishers.Remove(publisher);
             _bookContext.SaveChanges();
         }
 
