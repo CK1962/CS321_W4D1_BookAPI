@@ -33,10 +33,7 @@ namespace CS321_W4D1_BookAPI.Services
 
         public IEnumerable<Book> GetAll()
         {
-            return _bookContext.Books
-                .Include(b => b.Publisher)
-                .Include(b => b.Author)
-                .ToList();
+            return _bookContext.Books.ToList();
         }
 
         public Book Update(Book updatedBook)
